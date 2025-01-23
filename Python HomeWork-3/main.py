@@ -56,6 +56,12 @@ def get_students_by_last_name(last_name):
         return jsonify(matched_students), 200
     return jsonify({'message': f"No students found with last name '{last_name}'"}), 404
 
+# Экспорт данных в JSON
+@app.route('/students/export', methods=['GET'])
+def export_students_to_json():
+    students = read_students()
+    return jsonify(students), 200
+
 # Добавить нового студента
 @app.route('/students', methods=['POST'])
 def add_student():
